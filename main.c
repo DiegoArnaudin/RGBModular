@@ -38,6 +38,4 @@ void main()
 	loadButtons(&mod_buttons);
 	
 	application_run();
-	
-	
 }
