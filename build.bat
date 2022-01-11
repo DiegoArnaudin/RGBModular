@@ -1,2 +1,2 @@
-pushd "D:\Projectos Electronica\TestModules"
+pushd "F:\RGBModular"
 ccsc main.c +FH +P02 +DF
