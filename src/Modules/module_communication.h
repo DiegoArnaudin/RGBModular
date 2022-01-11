@@ -2,17 +2,20 @@
 #define _module_communication_h
 
 /* Constants */
-#define c_com_packet_size 19
+#define c_com_packet_size 20
 
 #define c_com_first 0x61
 #define c_com_second 0x62
 #define c_com_command_position 2
+
+enum commands { _cmd_write_mem='0', _cmd_rotate_left, _cmd_rotate_right};
 
 /* Globals */
 union {
 	hal_int8 chunk[c_com_packet_size];
 	struct{
 		hal_int8 start[2];
+		hal_int8 command;
 		hal_int8 data[16];
 		hal_int8 chk;
 	} str;	

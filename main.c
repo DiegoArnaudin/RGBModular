@@ -8,6 +8,11 @@
 #include "./src/Modules/module_communication.c"
 #include "./src/Modules/module_buttons.h"
 #include "./src/Modules/module_buttons.c"
+#include "./src/Modules/module_screen.h"
+#include "./src/Modules/module_screen.c"
+#include "./src/Modules/module_animation.h"
+#include "./src/Modules/module_animation.c"
+
 #include "./src/application.c"
 
 void loadMem(Module_Interface *module)
@@ -29,6 +34,18 @@ void loadButtons(Module_Interface *module)
     (*module).work = buttons_work;
 }
 
+void loadScreen(Module_Interface *module)
+{
+    (*module).doCommand = screen_doCommand;
+    (*module).work = screen_work;
+}
+
+void loadAnimation(Module_Interface *module)
+{
+    (*module).work = animation_work;
+    (*module).doCommand = animation_doCommand;
+}
+
 void main() 
 {
 	hal_initialize();
@@ -36,8 +53,8 @@ void main()
 	loadMem(&mod_memory);
 	loadCom(&mod_communication);
 	loadButtons(&mod_buttons);
+	loadScreen(&mod_screen);
+	loadAnimation(&mod_animation);
 	
 	application_run();
-	
-	
 }
